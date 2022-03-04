@@ -5,15 +5,15 @@ import (
 	"net/http"
 )
 
-// Hello response structure
-type Hello struct {
+// Welcom response structure
+type Welcom struct {
 	Message string
 }
 
-// HelloHandleFunc to be used as http.HandleFunc for Hello API
-func HelloHandleFunc(w http.ResponseWriter, r *http.Request) {
+// WelcomHandleFunc to be used as http.HandleFunc for Hello API
+func WelcomHandleFunc(w http.ResponseWriter, r *http.Request) {
 
-	m := Hello{"Welcome to Cloud Function"}
+	m := Welcom{"Welcome to Cloud Function"}
 	b, err := json.Marshal(m)
 
 	if err != nil {

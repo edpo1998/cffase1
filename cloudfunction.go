@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 
@@ -9,21 +8,20 @@ import (
 )
 
 func main() {
+	// Conect with mongo
 	api.Connectdb()
-	http.HandleFunc("/", index)
+	// Router
+	http.HandleFunc("/", api.WelcomHandleFunc)
 	http.HandleFunc("/vm", api.LogsHandleFunc)
+	// Start Server
 	http.ListenAndServe(port(), nil)
 }
 
+// Find enviroment variable port if return none then set default port
 func port() string {
 	port := os.Getenv("PORT")
 	if len(port) == 0 {
 		port = "5000"
 	}
 	return ":" + port
-}
-
-func index(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Welcom to Cloud Functions")
 }

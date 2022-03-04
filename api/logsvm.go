@@ -15,24 +15,24 @@ import (
 
 // Details Memory
 type Memory struct {
-	Total      float64 `json:"total"		bson:"total"`
-	Inuse      float64 `json:"inuse"		bson:"inuse"`
-	Percentage float64 `json:"percentage"	bson:"percentage"`
-	Free       float64 `json:"free"			bson:"free"`
+	Total      float64 `json:"total" bson:"total"`
+	Inuse      float64 `json:"inuse" bson:"inuse"`
+	Percentage float64 `json:"percentage" bson:"percentage"`
+	Free       float64 `json:"free" bson:"free"`
 }
 
 // Log from Virtual Machine
 type Log struct {
-	VmName   string    `json:"vmname" 	bson:"vmname"`
-	Endpoint string    `json:"endpoint" bson:"endpoint"`
-	Data     Memory    `json:"data"	 	bson:"data"`
-	Date     time.Time `json:"date"	 	bson:"date"`
+	VmName   string    `json:"vmname" bson:"vmname"`
+	Endpoint string    `json:"endpoint" bson:"enpoint"`
+	Data     Memory    `json:"data" bson:"data"`
+	Date     time.Time `json:"date" bson:"date"`
 }
 
 var dbLogs *mongo.Collection
 var ctx = context.TODO()
 
-// UsersHandleFunc to be used as http.HandleFunc for User API
+// LogsHandleFunc to be used as http.HandleFunc for User API
 func LogsHandleFunc(w http.ResponseWriter, r *http.Request) {
 	switch method := r.Method; method {
 	case http.MethodPost:
